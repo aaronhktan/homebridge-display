@@ -1,0 +1,13 @@
+[Unit]
+Description=Homebridge Display
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/home/pi/Documents/Github/homebridge-display/.env/bin/python /home/pi/Documents/Github/homebridge-display/display.py
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
