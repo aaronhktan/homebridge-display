@@ -18,17 +18,17 @@ numbering_mode=GPIO.BOARD, cols=16, rows=2, charmap='A02')
 
 def on_connect(client, userdata, flags, rc):
   print('Connected with result code {}'.format(rc))
-  client.subscribe('dht22/temperature')
-  client.subscribe('dht22/humidity')
+  client.subscribe('bme280/temperature')
+  client.subscribe('bme280/humidity')
   client.subscribe('bmp280/pressure')
   client.subscribe('sgp30/eCO2')
 
 def on_message(client, userdata, msg):
   print(msg.payload.decode('utf-8'))
-  if msg.topic == 'dht22/temperature':
+  if msg.topic == 'bme280/temperature':
     global temperature
     temperature = msg.payload.decode('utf-8')[:4]
-  elif msg.topic == 'dht22/humidity':
+  elif msg.topic == 'bme280/humidity':
     global humidity
     humidity = msg.payload.decode('utf-8')[:4]
   elif msg.topic == 'bmp280/pressure':
